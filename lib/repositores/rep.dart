@@ -29,4 +29,15 @@ abstract class GetInfo {
     }
     return [];
   }
+
+  static Future<List<ProductModel?>?> Getcotegories(String cat) async {
+    try {
+      final url = Uri.parse("https://fakestoreapi.com/products/category/$cat");
+      final res = await http.get(url);
+      return productModelFromJson(res.body);
+    } catch (e) {
+      print(e);
+    }
+    return null;
+  }
 }
